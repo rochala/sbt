@@ -221,7 +221,7 @@ val root = (project in file(".")).
     },
     // Used to have "openjdk-8-jdk" but that doesn't work on Ubuntu 14.04 https://github.com/sbt/sbt/issues/3105
     // before that we had java6-runtime-headless" and that was pulling in JDK9 on Ubuntu 16.04 https://github.com/sbt/sbt/issues/2931
-    debianPackageDependencies in Debian ++= Seq("bash (>= 3.2)"),
+    debianPackageDependencies in Debian ++= Seq("bash (>= 3.2)", "curl | wget"),
     debianPackageRecommends in Debian += "git",
     linuxPackageMappings in Debian += {
       val bd = sourceDirectory.value
@@ -262,7 +262,7 @@ val root = (project in file(".")).
     // and java-1.8.0-devel doesn't work on CentOS 6 and 7.
     // https://github.com/sbt/sbt-launcher-package/issues/151
     // https://github.com/elastic/logstash/issues/6275#issuecomment-261359933
-    rpmRequirements := Seq(),
+    rpmRequirements := Seq("curl | wget"),
     rpmProvides := Seq("sbt"),
 
     // WINDOWS SPECIFIC
