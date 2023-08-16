@@ -18,8 +18,8 @@ jobs:
     - name: Notify sbt/sbtn-dist of new sbt release
       if: github.event.action != 'ACKNewSbtVersion'
       run: |
-        REF=${{ github.ref }}
-        TAG=$(REF##*/)
+        export REF=${{ github.ref }}
+        export TAG=$(REF##*/)
         curl -L \
           -X POST \
           -H "Accept: application/vnd.github+json" \
