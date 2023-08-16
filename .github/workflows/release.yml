@@ -16,7 +16,7 @@ jobs:
         app_id: ${{ secrets.APP_ID }}
         private_key: ${{ secrets.APP_PRIVATE_KEY }}
     - name: Notify sbt/sbtn-dist of new sbt release
-      if: github.event.action != "ACKNewSbtVersion"
+      if: github.event.action != 'ACKNewSbtVersion'
       run: |
         curl -L \
           -X POST \
@@ -26,7 +26,7 @@ jobs:
           https://api.github.com/repos/rochala/sbtn-dist/dispatches \
           -d '{"event_type":"NewSbtVersionReleased","client_payload":{"repository": "rochala/sbt" }}'
     - name: ACK - sbt/sbtn-dist confirmed new release
-      if: github.event.action == "ACKNewSbtVersion"
+      if: github.event.action == 'ACKNewSbtVersion'
       run: |
         echo "ACK received from '${{ github.event.client_payload.repository }}'" && \
         curl -L \
