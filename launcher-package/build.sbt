@@ -262,7 +262,7 @@ val root = (project in file(".")).
     // and java-1.8.0-devel doesn't work on CentOS 6 and 7.
     // https://github.com/sbt/sbt-launcher-package/issues/151
     // https://github.com/elastic/logstash/issues/6275#issuecomment-261359933
-    rpmRequirements := Seq("curl or wget"),
+    rpmRequirements := Seq(),
     rpmProvides := Seq("sbt"),
 
     // WINDOWS SPECIFIC
